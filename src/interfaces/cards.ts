@@ -1,4 +1,4 @@
-import {  IGameState } from "./interface";
+import { IGameState } from "./interface";
 
 export interface ICardsGridProps {
     cards: ICardImage[];
@@ -11,6 +11,6 @@ export type ICardImage = "comet" | "moon" | "star" | "sun";
 export type ICardState = null | "Reveal" | "Matched";
 
 export interface ICardProps {
-	state: ICardState;
-	image: ICardImage;
+    state: ICardState;
+    image: ICardImage;
 }

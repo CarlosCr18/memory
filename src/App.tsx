@@ -1,37 +1,55 @@
-import { useState } from "react";
 import "./index.css";
-import { IScreens } from "./interfaces/interface";
-import { StartScreen } from "./views/Start";
-import { EndScreen } from "./views/End";
-import { GameScreen } from "./views/Game/view/Game";
 import { useGame } from "./hooks/useGame";
+import { AudioProvider } from "./services/audioService";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./views/Start";
+import Game from "./views/Game/view/Game";
+import End from "./views/End";
 
 function App() {
-	const [view, setView] = useState<IScreens>("Start");
-	const {gameEndStatus,checkForWin,updateGameState,lastStatus,reset,cards,gameState} = useGame({setView});
-	return (
-		<main className="max-w-screen-xl m-auto">
-			{view === "Start" && <StartScreen setView={setView} />}
-			{view === "Game" && (
-				<GameScreen
-				gameState={lastStatus}
-				checkForWin={checkForWin}
-				updateGameState={updateGameState}
-				cards={cards}
-				/>
-			)}
-			{view === "End" && (
-				<EndScreen
-					setView={setView}
-					gameEndStatus={gameEndStatus}
-					gameEndState={lastStatus}
-					reset={reset}
-					gameState={gameState}
-					cards={cards}
-				/>
-			)}{" "}
-		</main>
-	);
+    const {
+        gameEndStatus,
+        checkForWin,
+        updateGameState,
+        lastStatus,
+        reset,
+        cards,
+        gameState,
+    } = useGame();
+    return (
+        <main className="max-w-screen-xl m-auto">
+            <AudioProvider>
+                <Router>
+                    <Routes>
+                        <Route
+                            path="/game"
+                            element={
+                                <Game
+                                    gameState={lastStatus}
+                                    checkForWin={checkForWin}
+                                    updateGameState={updateGameState}
+                                    cards={cards}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/result"
+                            element={
+                                <End
+                                    gameEndStatus={gameEndStatus}
+                                    gameEndState={lastStatus}
+                                    reset={reset}
+                                    gameState={gameState}
+                                    cards={cards}
+                                />
+                            }
+                        />
+                        <Route path="/" element={<Home />} />
+                    </Routes>
+                </Router>
+            </AudioProvider>
+        </main>
+    );
 }
 
 export default App;

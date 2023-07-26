@@ -1,4 +1,4 @@
-export interface IGameCountDownProps{
-	onTimeEnd(): void;
-	currentTime: React.MutableRefObject<number>;
+export interface IGameCountDownProps {
+    onTimeEnd(): void;
+    currentTime: React.MutableRefObject<number>;
 }
