@@ -2,7 +2,7 @@ import "./index.css";
 import { useGame } from "./hooks/useGame";
 import { AudioProvider } from "./services/audioService";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./views/Start";
+import Home from "./views/Start/Start";
 import Game from "./views/Game/view/Game";
 import End from "./views/End";
 

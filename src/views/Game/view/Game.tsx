@@ -104,7 +104,10 @@ const GameScreen = ({
     };
 
     return (
-        <section className="relative min-h-screen flex justify-center items-center p-2 md:p-5">
+        <section
+            data-testid="GameSection"
+            className="relative min-h-screen flex justify-center items-center p-2 md:p-5"
+        >
             <AudioButton />
             <GameCountdown onTimeEnd={onTimeEnd} currentTime={currentTime} />
             <CardsGrid

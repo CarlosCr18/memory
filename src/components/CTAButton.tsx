@@ -16,6 +16,7 @@ export const CTAButton = ({ buttonText, onButtonClick }: ICTAButtonProps) => {
             transition={{ duration: 0.9 }}
         >
             <motion.button
+                id="ctaButton"
                 className="bg-lime-600 px-10 py-5 text-white"
                 whileHover={bounceAnimation}
                 onClick={onButtonClick}

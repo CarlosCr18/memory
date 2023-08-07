@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import Logo from "../assets/images/logo.svg";
-import { CTAButton } from "../components/CTAButton";
+import Logo from "../../assets/images/logo.svg";
+import { CTAButton } from "../../components/CTAButton";
 import { useNavigate } from "react-router-dom";
 
 const StartScreen = () => {
